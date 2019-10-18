@@ -1,0 +1,35 @@
+--- 
+title: "EFForTS-LGraf Manual"
+author: "Jan Salecker"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Software manual for Landscape Generator EFForTS-LGraf"
+---
+
+# Introduction to EFForTS-LGraf
+
+Spatially-explicit simulation models are commonly used to study complex ecological and socio-economic research questions. Often these models depend on detailed input data, such as initial land-cover maps to set up model simulations. Here we present the landscape generator EFFortS-LGraf that provides artificially-generated land-use maps of agricultural landscapes shaped by small-scale farms. EFForTS-LGraf is a process-based landscape generator that explicitly incorporates the human dimension of land-use change. The model generates roads and villages that consist of smallholder farming households. These smallholders use different establishment strategies to create fields in their close vicinity. Crop types are distributed to these fields based on crop fractions and specialization levels. EFForTS-LGraf model parameters such as household area or field size frequency distributions can be derived from household surveys or geospatial data. This can be an advantage over the abstract parameters of neutral landscape generators. EFForTS-LGraf can be applied both to generate maps as inputs for simulation modelling and as a stand-alone tool for specific landscape-scale analyses in the context of ecological-economic studies of smallholder farming systems.
+
+If you are interested in technical details, sensitivity analyes, model validation and application examples, please check out the accompanying publication of EFForTS-LGraf @ [Plos one](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0222949). If you use EFForTS-LGraf for your research please refer to this publication ([citation information](https://journals.plos.org/plosone/article/citation?id=10.1371/journal.pone.0222949)).
+
+EFForTS-LGraf can be downloaded from our [github repository](https://github.com/nldoc/EFForTS-LGraf).
+You need NetLogo 6 to open and run the model.
+
+This manual will guide you through some examples that should get you started with EFForTS-LGraf.
+
+* Chapter \@ref(getstarted) contains information on how to setup and run EFForTS-LGraf.
+* Chapter \@ref(funcpar) will give you an overview of the basic functionality and parameters.
+* Chapter \@ref(application) contains different application examples.
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
