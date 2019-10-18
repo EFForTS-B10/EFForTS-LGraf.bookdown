@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">EFForTS-LGraf manual</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to EFForTS-LGraf</a></li>
@@ -150,7 +150,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="application.html"><a href="application.html#standalone"><i class="fa fa-check"></i><b>4.1</b> Standalone application examples</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="application.html"><a href="application.html#fromscratch"><i class="fa fa-check"></i><b>4.1.1</b> Example 1: A landscape from scratch</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="application.html"><a href="application.html#nlrx"><i class="fa fa-check"></i><b>4.2</b> Application examples using nlrx</a></li>
+<li class="chapter" data-level="4.2" data-path="application.html"><a href="application.html#nlrx"><i class="fa fa-check"></i><b>4.2</b> Application examples using nlrx</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="application.html"><a href="application.html#example-1-gradient-of-agricultural-density"><i class="fa fa-check"></i><b>4.2.1</b> Example 1: Gradient of agricultural density</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="dummy-chapter.html"><a href="dummy-chapter.html"><i class="fa fa-check"></i><b>5</b> Dummy chapter</a></li>
 <li class="chapter" data-level="6" data-path="dummy-chapter-1.html"><a href="dummy-chapter-1.html"><i class="fa fa-check"></i><b>6</b> Dummy chapter</a></li>
@@ -327,7 +329,139 @@ Figure 4.5: Plot generated landscape in R
 </div>
 <div id="nlrx" class="section level2">
 <h2><span class="header-section-number">4.2</span> Application examples using nlrx</h2>
+<p>All following examples use the <a href="https://github.com/ropensci/nlrx">nlrx package</a> to generate maps with EFForTS-LGraf, directly from R. This can be beneficial if many different maps with varying parameters need to be created. More detailed information on nlrx can be found on the <a href="https://ropensci.github.io/nlrx/">nlrx documentation homepage</a>.</p>
+<div id="example-1-gradient-of-agricultural-density" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Example 1: Gradient of agricultural density</h3>
+<p>Here we show a simple example for creating maps along a gradient of road length, agricultural proportion and crop types.
+This example can be easily adjusted.</p>
+<div id="step-1-nl-object" class="section level4">
+<h4><span class="header-section-number">4.2.1.1</span> Step 1: nl object</h4>
+<p>The nlrx package uses nl objects to store all relevant information that is needed for executing NetLogo simulations in one place.
+We always start with defining such an nl object and enter the directories where NetLogo itself and the model files are located.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(nlrx)</a>
+<a class="sourceLine" id="cb2-2" title="2">netlogopath &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">&quot;1_Model/NetLogo 6.0.4/&quot;</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">modelpath &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">&quot;1_Model/EFForTS-LGraf/EFForTS-LGraf.nlogo&quot;</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">nl &lt;-<span class="st"> </span><span class="kw">nl</span>(<span class="dt">nlversion =</span> <span class="st">&quot;6.0.4&quot;</span>,</a>
+<a class="sourceLine" id="cb2-6" title="6">         <span class="dt">nlpath =</span> netlogopath,</a>
+<a class="sourceLine" id="cb2-7" title="7">         <span class="dt">modelpath =</span> modelpath,</a>
+<a class="sourceLine" id="cb2-8" title="8">         <span class="dt">jvmmem =</span> <span class="dv">2024</span>)</a></code></pre></div>
+</div>
+<div id="step-2-attach-an-experiment" class="section level4">
+<h4><span class="header-section-number">4.2.1.2</span> Step 2: attach an experiment</h4>
+<p>Next, we need to attach an experiment object to this nl object.
+The experiment defines which buttons are pressed for startup (<code>idsetup</code>) and model execution (<code>idgo</code>).
+We only want to run one repetition for each parameterisation (<code>repetitions=1</code>) and we only want to take one measurement at the end of the simulation (<code>tickmetrics="false"</code>).
+We also define which measurements we want to take. Here we measure coordinates, landuse type and road of each patch in the landscape (<code>metrics.patches = c("pxcor", "pycor", "p_landuse-type", "p_road")</code>).
+The variables slot, defines parameters which should be varied on each run. We want to create maps, representing a gradient of agricultural area, road length and crop types. We use the values vector to define three runs. The first will have 10% agricultural area, with 200 road cells and a 10% proportion of crop type 1. The second run will have 40% agricultural area, with 400 road cells and a 40% proportion of crop type 1. The third run will have 70% agricultural area, with 600 road cells and a 70% proportion of crop type 1. The remaining proportion of crop types will be filled up with crop type 2, because we set <code>"LUT-fill-up" = "\"LUT-2-fraction\""</code> in the constants list of the experiment.
+All other parameters, that should be constant on each run are also entered in this constants list.</p>
+<p>There are many more options on designing experiments with nlrx (see the manual for more options).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">nl<span class="op">@</span>experiment &lt;-<span class="st"> </span><span class="kw">experiment</span>(<span class="dt">expname=</span><span class="st">&quot;LGraf&quot;</span>,</a>
+<a class="sourceLine" id="cb3-2" title="2">                            <span class="dt">outpath=</span><span class="kw">file.path</span>(<span class="st">&quot;3_Data&quot;</span>),</a>
+<a class="sourceLine" id="cb3-3" title="3">                            <span class="dt">repetition=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-4" title="4">                            <span class="dt">tickmetrics=</span><span class="st">&quot;false&quot;</span>,</a>
+<a class="sourceLine" id="cb3-5" title="5">                            <span class="dt">idsetup=</span><span class="kw">c</span>(<span class="st">&quot;setup&quot;</span>),</a>
+<a class="sourceLine" id="cb3-6" title="6">                            <span class="dt">idgo=</span><span class="kw">c</span>(<span class="st">&quot;establish_fields&quot;</span>, <span class="st">&quot;assign-land-uses&quot;</span>),</a>
+<a class="sourceLine" id="cb3-7" title="7">                            <span class="dt">metrics.patches=</span><span class="kw">c</span>(<span class="st">&quot;pxcor&quot;</span>, <span class="st">&quot;pycor&quot;</span>, <span class="st">&quot;p_landuse-type&quot;</span>, <span class="st">&quot;p_road&quot;</span>),</a>
+<a class="sourceLine" id="cb3-8" title="8">                            <span class="dt">variables =</span> <span class="kw">list</span>(<span class="st">&quot;proportion-agricultural-area&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>)),</a>
+<a class="sourceLine" id="cb3-9" title="9">                                             <span class="st">&quot;total-road-length&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="dv">200</span>, <span class="dv">400</span>, <span class="dv">600</span>)),</a>
+<a class="sourceLine" id="cb3-10" title="10">                                             <span class="st">&quot;LUT-1-fraction&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>))),</a>
+<a class="sourceLine" id="cb3-11" title="11">                            <span class="dt">constants =</span> <span class="kw">list</span>(<span class="st">&quot;households-per-cell&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-12" title="12">                                             <span class="st">&quot;setup-model&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">agricultural-area</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-13" title="13">                                             <span class="st">&quot;reproducable?&quot;</span> =<span class="st"> &quot;FALSE&quot;</span>,   <span class="co">## random seed is set via nlrx</span></a>
+<a class="sourceLine" id="cb3-14" title="14">                                             <span class="st">&quot;write.param.file?&quot;</span> =<span class="st"> &quot;FALSE&quot;</span>, <span class="co">## useful for debugging</span></a>
+<a class="sourceLine" id="cb3-15" title="15">                                             <span class="st">&quot;width&quot;</span> =<span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb3-16" title="16">                                             <span class="st">&quot;height&quot;</span> =<span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb3-17" title="17">                                             <span class="st">&quot;cell-length-meter&quot;</span> =<span class="st"> </span><span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb3-18" title="18">                                             <span class="st">&quot;road.algorithm&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">artificial.perlin</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-19" title="19">                                             <span class="st">&quot;min-dist-roads&quot;</span> =<span class="st"> </span><span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb3-20" title="20">                                             <span class="st">&quot;perlin-octaves&quot;</span> =<span class="st"> </span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb3-21" title="21">                                             <span class="st">&quot;perlin-persistence&quot;</span> =<span class="st"> </span><span class="fl">0.1</span>,</a>
+<a class="sourceLine" id="cb3-22" title="22">                                             <span class="st">&quot;cone-angle&quot;</span> =<span class="st"> </span><span class="dv">90</span>,</a>
+<a class="sourceLine" id="cb3-23" title="23">                                             <span class="st">&quot;dist-weight&quot;</span> =<span class="st"> </span><span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb3-24" title="24">                                             <span class="st">&quot;occ-probability&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-25" title="25">                                             <span class="st">&quot;hh-area-mean-ha&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-26" title="26">                                             <span class="st">&quot;hh-area-sd-ha&quot;</span> =<span class="st"> </span><span class="fl">0.91</span>,</a>
+<a class="sourceLine" id="cb3-27" title="27">                                             <span class="st">&quot;hh-area-distribution&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">log-normal</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-28" title="28">                                             <span class="st">&quot;vlg-area-distribution&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">uniform</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-29" title="29">                                             <span class="st">&quot;vlg-area-mean&quot;</span> =<span class="st"> </span><span class="dv">15</span>,</a>
+<a class="sourceLine" id="cb3-30" title="30">                                             <span class="st">&quot;vlg-area-sd&quot;</span> =<span class="st"> </span><span class="dv">6</span>,</a>
+<a class="sourceLine" id="cb3-31" title="31">                                             <span class="st">&quot;min-distance&quot;</span> =<span class="st"> </span><span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb3-32" title="32">                                             <span class="st">&quot;field-size-distribution&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">log-normal</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-33" title="33">                                             <span class="st">&quot;use-field-size-percentage?&quot;</span> =<span class="st"> &quot;FALSE&quot;</span>,</a>
+<a class="sourceLine" id="cb3-34" title="34">                                             <span class="st">&quot;field-size-percentage&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-35" title="35">                                             <span class="st">&quot;field-size-mean-ha&quot;</span> =<span class="st"> </span><span class="fl">0.49</span>,</a>
+<a class="sourceLine" id="cb3-36" title="36">                                             <span class="st">&quot;field-size-sd-ha&quot;</span> =<span class="st"> </span><span class="fl">0.77</span>,</a>
+<a class="sourceLine" id="cb3-37" title="37">                                             <span class="st">&quot;set-field-strategies-by-id?&quot;</span> =<span class="st"> &quot;TRUE&quot;</span>,</a>
+<a class="sourceLine" id="cb3-38" title="38">                                             <span class="st">&quot;field-strategies-id&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-39" title="39">                                             <span class="st">&quot;change-strategy&quot;</span> =<span class="st"> </span><span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb3-40" title="40">                                             <span class="st">&quot;field.shape.factor&quot;</span> =<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-41" title="41">                                             <span class="st">&quot;inaccessible-area-fraction&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-42" title="42">                                             <span class="st">&quot;LUT-1-name&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">oilpalm</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-43" title="43">                                             <span class="st">&quot;LUT-2-name&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">rubber</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-44" title="44">                                             <span class="st">&quot;LUT-2-fraction&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-45" title="45">                                             <span class="st">&quot;LUT-3-fraction&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-46" title="46">                                             <span class="st">&quot;LUT-4-fraction&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-47" title="47">                                             <span class="st">&quot;LUT-5-fraction&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-48" title="48">                                             <span class="st">&quot;LUT-1-specialize&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-49" title="49">                                             <span class="st">&quot;LUT-2-specialize&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-50" title="50">                                             <span class="st">&quot;LUT-3-specialize&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-51" title="51">                                             <span class="st">&quot;LUT-4-specialize&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-52" title="52">                                             <span class="st">&quot;LUT-5-specialize&quot;</span> =<span class="st"> </span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb3-53" title="53">                                             <span class="st">&quot;LUT-fill-up&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">LUT-2-fraction</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-54" title="54">                                             <span class="st">&quot;land-use-types&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">household-level-specialization</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-55" title="55">                                             <span class="st">&quot;default.maps&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">landuse-type</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb3-56" title="56">                                             <span class="st">&quot;write-household-ids&quot;</span> =<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">only-first-households</span><span class="ch">\&quot;</span><span class="st">&quot;</span>))</a></code></pre></div>
+</div>
+<div id="step-3-attach-a-simdesign" class="section level4">
+<h4><span class="header-section-number">4.2.1.3</span> Step 3: attach a simdesign</h4>
+<p>While the experiment defines the parameters that should be varied, the simdesign creates a parameter matrix from this information.
+In our case, we defined distinct values using the values vector, thus we need to add a simdesign_distinct to our nl object.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Add a distinct simdesign</span></a>
+<a class="sourceLine" id="cb4-2" title="2">nl<span class="op">@</span>simdesign &lt;-<span class="st"> </span><span class="kw">simdesign_distinct</span>(<span class="dt">nl=</span>nl, <span class="dt">nseeds=</span><span class="dv">1</span>)</a></code></pre></div>
+</div>
+<div id="step-4-execute-simulations" class="section level4">
+<h4><span class="header-section-number">4.2.1.4</span> Step 4: Execute simulations</h4>
+<p>Now, the nl object is complete and can be used to execute model simulations with EFForTS-LGraf.
+We only need to execute <code>run_nl_all(nl)</code> to run these simulations.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Run all three simulations</span></a>
+<a class="sourceLine" id="cb5-2" title="2">results &lt;-<span class="st"> </span><span class="kw">run_nl_all</span>(nl)</a></code></pre></div>
+</div>
+<div id="step-5-postprocessing" class="section level4">
+<h4><span class="header-section-number">4.2.1.5</span> Step 5: Postprocessing</h4>
+<p>The simdesign object within the nl object provides an empty slot for storing output data of simulations.
+Attaching output data to the nl object allows to have all information of a simulation in one object.
+It also enables to use several post-processing functions of nlrx, such as converting patch.metrics to spatial raster files.
+Here, we first attach the results to the nl object, convert the spatial data to raster files and create a plot of land-use types and road cells for each of our three model runs.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># Attach results to nl object:</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">setsim</span>(nl, <span class="st">&quot;simoutput&quot;</span>) &lt;-<span class="st"> </span>results</a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co"># Convert spatial data to raster stacks</span></a>
+<a class="sourceLine" id="cb6-5" title="5">nl_sp &lt;-<span class="st"> </span><span class="kw">nl_to_raster</span>(nl)</a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co"># Combine roads and landuse raster and plot:</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="kw">png</span>(<span class="st">&quot;4_Plots/readme_example_nlrx.png&quot;</span>, <span class="dt">width=</span><span class="dv">16</span>, <span class="dt">height=</span><span class="dv">6</span>, <span class="dt">units=</span><span class="st">&quot;cm&quot;</span>, <span class="dt">res=</span><span class="dv">300</span>)</a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb6-11" title="11">nl_sp_plot &lt;-<span class="st"> </span>purrr<span class="op">::</span><span class="kw">map</span>(nl_sp<span class="op">$</span>spatial.raster, <span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb6-12" title="12">  t1 &lt;-<span class="st"> </span>x[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb6-13" title="13">  t2 &lt;-<span class="st"> </span>x[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb6-14" title="14">  rst1_mod &lt;-<span class="st"> </span><span class="kw">overlay</span>(t1, t2, <span class="dt">fun =</span> <span class="cf">function</span>(x, y) {</a>
+<a class="sourceLine" id="cb6-15" title="15">    x[(y[] <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb6-16" title="16">    <span class="kw">return</span>(x)</a>
+<a class="sourceLine" id="cb6-17" title="17">  })</a>
+<a class="sourceLine" id="cb6-18" title="18">  <span class="kw">plot</span>(rst1_mod, <span class="dt">colNA=</span><span class="st">&quot;black&quot;</span>)  </a>
+<a class="sourceLine" id="cb6-19" title="19">})</a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-17"></span>
+<img src="figures/application_nlrx01_fig01.png" alt="Plot of the three generated landscapes" width="944" />
+<p class="caption">
+Figure 4.6: Plot of the three generated landscapes
+</p>
+</div>
 
+</div>
+</div>
 </div>
 </div>
             </section>
