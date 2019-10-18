@@ -52,6 +52,68 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -73,12 +135,23 @@
 <li class="chapter" data-level="2" data-path="getstarted.html"><a href="getstarted.html"><i class="fa fa-check"></i><b>2</b> Get started</a><ul>
 <li class="chapter" data-level="2.1" data-path="getstarted.html"><a href="getstarted.html#prerequisites"><i class="fa fa-check"></i><b>2.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2.2" data-path="getstarted.html"><a href="getstarted.html#basic-functions"><i class="fa fa-check"></i><b>2.2</b> Basic Functions</a></li>
-<li class="chapter" data-level="2.3" data-path="getstarted.html"><a href="getstarted.html#parameterization"><i class="fa fa-check"></i><b>2.3</b> Parameterization</a></li>
-<li class="chapter" data-level="2.4" data-path="getstarted.html"><a href="getstarted.html#using-custom-road-shapefiles"><i class="fa fa-check"></i><b>2.4</b> Using custom road shapefiles</a></li>
-<li class="chapter" data-level="2.5" data-path="getstarted.html"><a href="getstarted.html#efforts-lgraf-output-functions"><i class="fa fa-check"></i><b>2.5</b> EFForTS-LGraf output functions</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="funcpar.html"><a href="funcpar.html"><i class="fa fa-check"></i><b>3</b> Functionality and Parameterization</a></li>
-<li class="chapter" data-level="4" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>4</b> Application examples</a></li>
+<li class="chapter" data-level="3" data-path="funcpar.html"><a href="funcpar.html"><i class="fa fa-check"></i><b>3</b> Functionality and Parameterization</a><ul>
+<li class="chapter" data-level="3.1" data-path="funcpar.html"><a href="funcpar.html#functionality"><i class="fa fa-check"></i><b>3.1</b> Functionality</a></li>
+<li class="chapter" data-level="3.2" data-path="funcpar.html"><a href="funcpar.html#parameterization"><i class="fa fa-check"></i><b>3.2</b> Parameterization</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="funcpar.html"><a href="funcpar.html#setup-landscape-and-households"><i class="fa fa-check"></i><b>3.2.1</b> Setup landscape and households</a></li>
+<li class="chapter" data-level="3.2.2" data-path="funcpar.html"><a href="funcpar.html#establish-fields"><i class="fa fa-check"></i><b>3.2.2</b> Establish fields</a></li>
+<li class="chapter" data-level="3.2.3" data-path="funcpar.html"><a href="funcpar.html#distribute-crops"><i class="fa fa-check"></i><b>3.2.3</b> Distribute crops</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="funcpar.html"><a href="funcpar.html#using-custom-road-shapefiles"><i class="fa fa-check"></i><b>3.3</b> Using custom road shapefiles</a></li>
+<li class="chapter" data-level="3.4" data-path="funcpar.html"><a href="funcpar.html#efforts-lgraf-output-functions"><i class="fa fa-check"></i><b>3.4</b> EFForTS-LGraf output functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>4</b> Application examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="application.html"><a href="application.html#standalone"><i class="fa fa-check"></i><b>4.1</b> Standalone application examples</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="application.html"><a href="application.html#fromscratch"><i class="fa fa-check"></i><b>4.1.1</b> Example 1: A landscape from scratch</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="application.html"><a href="application.html#nlrx"><i class="fa fa-check"></i><b>4.2</b> Application examples using nlrx</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="dummy-chapter.html"><a href="dummy-chapter.html"><i class="fa fa-check"></i><b>5</b> Dummy chapter</a></li>
 <li class="chapter" data-level="6" data-path="dummy-chapter-1.html"><a href="dummy-chapter-1.html"><i class="fa fa-check"></i><b>6</b> Dummy chapter</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -104,8 +177,271 @@
             <section class="normal" id="section-">
 <div id="funcpar" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Functionality and Parameterization</h1>
-<p>Here is a review of existing methods.</p>
+<div id="functionality" class="section level2">
+<h2><span class="header-section-number">3.1</span> Functionality</h2>
+<p>THE MODEL WORKS LIKE THAT</p>
+</div>
+<div id="parameterization" class="section level2">
+<h2><span class="header-section-number">3.2</span> Parameterization</h2>
+<p>All parameters on the graphical user interface are numbered. The following sections guide you through parameterization of the model.</p>
+<div id="setup-landscape-and-households" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Setup landscape and households</h3>
+<p>The parameters in the blue colored section of the EFForTS-LGraf GUI are used for model setup.
+World dimensions, scale parameters, road setup, household, village and field sizes are some of the parameters that are defined in this section.</p>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="figures/EFForTS-LGraf_interface_I.png" alt="Setup parameters" width="386" />
+<p class="caption">
+Figure 3.1: Setup parameters
+</p>
+</div>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>nr</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.1</td>
+<td>First define if a randomly drawn seed will be used or set a specific seed to make map generation reproducible</td>
+</tr>
+<tr class="even">
+<td>1.2</td>
+<td>Set the dimensions of the landscape in cells, and the corresponding cell resolution in meter (used for area calculations)</td>
+</tr>
+<tr class="odd">
+<td>1.3</td>
+<td>Choose algorithm for road creation</td>
+</tr>
+<tr class="even">
+<td>1.3.1</td>
+<td>If <code>real-road-map</code> has been chosen in 1.3, add a string identifier for the map (see section Use own road shapefiles as road templates below for guidance on using own road shapefiles)</td>
+</tr>
+<tr class="odd">
+<td>1.3.2</td>
+<td>If an artificial road generation algorithm has been chosen in 1.3, define the number of road cells and the minimum distance between roads</td>
+</tr>
+<tr class="even">
+<td>1.3.3</td>
+<td>If <code>artifical.perlin</code> has been chosen in 1.3 define the parameters for the perlin noise algorithm</td>
+</tr>
+<tr class="odd">
+<td>1.4</td>
+<td>Set the maximum number of trials for loops. Depending on the parameterization, a low value may result in landscapes that do not represent the specified needs accurately. Larger numbers may increase simulation time.</td>
+</tr>
+<tr class="even">
+<td>1.5</td>
+<td>Define the number of households that are allowed to have a homebase on the same cell</td>
+</tr>
+<tr class="odd">
+<td>1.6</td>
+<td>Choose a setup type: </br> - number-of-households: Define a total number of households in 1.7 </br> - number-of-villages: Define a total number of villages in 1.7 </br> - proportion-agriculture: Define the final proportion of fields in the landscape in 1.7</td>
+</tr>
+<tr class="even">
+<td>1.8</td>
+<td>Define household parameters. Here you can define the area distribution of households in the landscape. You can define the type of distribution from which household areas are drawn during initialization. You can also define the parameters of these distributions.</td>
+</tr>
+<tr class="odd">
+<td>1.9</td>
+<td>Define village parameters. Here you can define the area distribution of villages (accumulation of households) in the landscape. You can define the type of distribution from which village areas are drawn during initialization. You can also define the parameters of these distributions.</td>
+</tr>
+<tr class="even">
+<td>1.10</td>
+<td>Define the minimum distance between villages in cells. For certain parameterizations, this distance might not be realized. In such cases, a warning will appear that distances between villages are lower than specified.</td>
+</tr>
+<tr class="odd">
+<td>1.11</td>
+<td>This experimental feature allows to create a second type of household in the model, that uses a diferent area distribution (as defined in 1.11.2).</td>
+</tr>
+<tr class="even">
+<td>1.12</td>
+<td>Define inaccessible areas that are created during setup. These areas are not available for field creation by smallholder households. These areas may represent conservation areas or company plantations that are not owend by smallholders.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="establish-fields" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Establish fields</h3>
+<p>The parameters in the magenta colored section of the EFForTS-LGraf GUI are used for the field establishment procedure.
+Here you define the field size distribution and control the strategies that are used for field establishment.</p>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="figures/EFForTS-LGraf_interface_II.png" alt="Field establishment parameters" width="388" />
+<p class="caption">
+Figure 3.2: Field establishment parameters
+</p>
+</div>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>nr</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2.1</td>
+<td>Define the field size distribution for the field establishment procedure.</td>
+</tr>
+<tr class="even">
+<td>2.2</td>
+<td>Instead of defining a specific mean value for the field size distribution, you can use the <code>field-size-percentage</code> slider to calculate the mean dynamically, depending on the mean value of the household area distribution.</td>
+</tr>
+<tr class="odd">
+<td>2.3</td>
+<td>The field shape factor allows you to define if fields should be mostly quadratic (value = 1) or narrow (values &gt; 1 and values &lt; 1)</td>
+</tr>
+<tr class="even">
+<td>2.4</td>
+<td>Select a set of field establishment strategies. Four strategies are currently implemented. Pred-defined combinations of these strategies can also be selected using parameters of 2.5. A household will try to establish a field under the current strategy for a specified number of tries (as defined in 2.6). If a household does not succeed with the current strategy, it will switch to the next strategy in numeric order (e.g. if all strategies are available and the current strategy is s1.homebase, it will switch to s2.fields). </br> - s1.homebase - Households will search for empty cells around their homebase to establish fields </br> - s2.fields - Households will search for empty cells around already established fields to establish new fields </br> - s3.nearby - Households will search for empty cells in an gradually increasing radius around their homebase </br> - s4.avoid - Households will search for empty cells around their homebase, that are only surrounded by empty cells</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="distribute-crops" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Distribute crops</h3>
+<p>The parameters in the orange colored section of the EFForTS-LGraf GUI are used for the crop distribution procedure.
+Here you define the names, proportions and specialization levels of crop classes that are distributed to the fields.</p>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="figures/EFForTS-LGraf_interface_III.png" alt="Crop distribution parameters" width="386" />
+<p class="caption">
+Figure 3.3: Crop distribution parameters
+</p>
+</div>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>nr</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3.1</td>
+<td>Optionally, define names for up to five different crop types</td>
+</tr>
+<tr class="even">
+<td>3.2</td>
+<td>Define fractions of each cropt type. The sum of these fractions must add up to one</td>
+</tr>
+<tr class="odd">
+<td>3.3</td>
+<td>Optionally, for each crop type define the fraction of households that only culativates this crop type. For example, if specialization of crop type 1 is set to 1, each household which cultivates crop type 1, will only cultviate this land-use type (these fractions are only used, if 3.5 land-use-types is set to <code>household-level-specialization</code>)</td>
+</tr>
+<tr class="even">
+<td>3.4</td>
+<td>Here you can define one of the 5 land-use types which is used to fill up remaining fractions if the defined fractions do not sum up to one.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="using-custom-road-shapefiles" class="section level2">
+<h2><span class="header-section-number">3.3</span> Using custom road shapefiles</h2>
+<p>Instead of generating roads, EFForTS-LGraf is able to use an existing roadmap shapefile as input by selecting <code>real.shapefile</code> from the dropdown menu under 1.3. These shapefiles are loaded from the folder “LGraf_roadmaps” within the input folder of the model directory.
+Own shapefiles can be added here. Please note, own shapefiles need to follow a specified filename format as shown below. At least three files need to be available to load a roadmap shapefile:
+* &lt;roadmapid&gt;_road.prj - the projection file of the roadmap
+* &lt;roadmapid&gt;_road.shp - the actual shapefile containing road polylines
+* &lt;roadmapid&gt;_area.shp - a shapefile with a framing box of the road shapefile which is used to set the dimensions of the landscape</p>
+<p>You can replace &lt;roadmapid&gt; with any string, which can then be entered in the input field <code>road-map-id</code> under 1.3.1 to load the shapefile. For example, a valid fileset could be named “mymap1_road.prj”, “mymap1_road.shp”, “mymap1_area.shp”. This fileset can then be loaded by selecting <code>real.shapefile</code> under 1.3 and entering <code>mymap1</code> into the input field under 1.3.1.</p>
+<p>Five roadmap shapefiles from Jambi, Indonesia are already included in EFForTS-LGraf. These shapefiles can be loaded by entering <code>jambi1</code>, <code>jambi2</code>, <code>jambi3</code>, <code>jambi4</code> or <code>jambi5</code> under 1.3.1).</p>
+</div>
+<div id="efforts-lgraf-output-functions" class="section level2">
+<h2><span class="header-section-number">3.4</span> EFForTS-LGraf output functions</h2>
+<p>The main output function of EFForTS-LGraf is executed by pressing the “Write output” button on the GUI (IV. Paint &amp; Output). This function will write the following spatial information to disk:</p>
+<table>
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>filename</th>
+<th>type</th>
+<th>content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>forest-patch-raster</td>
+<td>ASCII raster</td>
+<td>forest patch IDs</td>
+</tr>
+<tr class="even">
+<td>hh_points_layer</td>
+<td>ESRI Shapefile</td>
+<td>Point features generated from household agents</td>
+</tr>
+<tr class="odd">
+<td>hh-tpye-1-raster</td>
+<td>ASCII raster</td>
+<td>counts of households with type 1 on each cell</td>
+</tr>
+<tr class="even">
+<td>hh-tpye-2-raster</td>
+<td>ASCII raster</td>
+<td>counts of households with type 2 on each cell</td>
+</tr>
+<tr class="odd">
+<td>homebase-raster</td>
+<td>ASCII raster</td>
+<td>Household IDs on homebases of household agents</td>
+</tr>
+<tr class="even">
+<td>homebase-raster_layerN</td>
+<td>ASCII raster</td>
+<td>Optional files for each layer of household homebases. Only relevant if <code>households-per-cell</code> &gt; 1 and only created if <code>write-household-ids</code> is set to “layered files”</td>
+</tr>
+<tr class="odd">
+<td>land-use-type-raster</td>
+<td>ASCII raster</td>
+<td>crop type IDs</td>
+</tr>
+<tr class="even">
+<td>ownership-raster</td>
+<td>ASCII raster</td>
+<td>Ownerhsip household IDs of fields</td>
+</tr>
+<tr class="odd">
+<td>patch-id-raster</td>
+<td>ASCII raster</td>
+<td>Patch IDs</td>
+</tr>
+<tr class="even">
+<td>road-raster</td>
+<td>ASCII raster</td>
+<td>Roads cells</td>
+</tr>
+<tr class="odd">
+<td>roads_polyline_layer</td>
+<td>ESRI Shapefile</td>
+<td>Road cells as polyline shapefile</td>
+</tr>
+<tr class="even">
+<td>village-raster</td>
+<td>ASCII raster</td>
+<td>Village IDs of homebase cells</td>
+</tr>
+</tbody>
+</table>
+<p>The output files are written to the specified subfolder/path <code>foldername</code>. In order to write output, the specified folder/path need to exist.</p>
+<p>The NetLogo GIS extension allows to map the NetLogo coordinates to a specified envelope of GIS coordinates.
+This can be done by activating the <code>apply-gis-envelope?</code> switch and specifying the boundary coordinates of the GIS envelope. These coordinates are specified as a list (<code>[minimum-x maximum-x minimum-y maximum-y]</code>) in the input field <code>gis-envelope</code>. Additionally, spatial output can be created with a specified projection system. In order to set the projection, activate the switch <code>apply-gis-projection?</code> and specify a "*.prj" file with projection definitions in the input field <code>gis-projection</code> (see <a href="https://ccl.northwestern.edu/netlogo/docs/gis.html#gis:load-coordinate-system">NetLogo user manual</a> for more information).</p>
 
+</div>
 </div>
             </section>
 
