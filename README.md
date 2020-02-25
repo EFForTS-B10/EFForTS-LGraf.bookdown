@@ -2,8 +2,7 @@
 
 # EFForTS-LGraf Manual
 
-EFForTS-LGraf: Landscape Generator for Creating Smallholder-Driven Land-Use Mosaics.
-This repository contains a manual for the Landscape Generator EFForTS-LGraf.
+This repository contains a manual for the Landscape Generator EFForTS-LGraf: A Landscape Generator for Creating Smallholder-Driven Land-Use Mosaics.
 
 EFForTS-LGraf is implemented in NetLogo and was published under the GNU General Public License v3.0.
 
