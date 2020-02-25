@@ -10,7 +10,9 @@ link-citations: yes
 description: "Software manual for Landscape Generator EFForTS-LGraf"
 ---
 
-# Introduction to EFForTS-LGraf <img src="figures/EFForTS-LGraf_logo.png" align="right" width="150" />
+# Introduction to EFForTS-LGraf 
+
+<img src="figures/EFForTS-LGraf_logo.png" align="right" width="250" />
 
 Spatially-explicit simulation models are commonly used to study complex ecological and socio-economic research questions. Often these models depend on detailed input data, such as initial land-cover maps to set up model simulations. Here we present the landscape generator EFFortS-LGraf that provides artificially-generated land-use maps of agricultural landscapes shaped by small-scale farms. EFForTS-LGraf is a process-based landscape generator that explicitly incorporates the human dimension of land-use change. The model generates roads and villages that consist of smallholder farming households. These smallholders use different establishment strategies to create fields in their close vicinity. Crop types are distributed to these fields based on crop fractions and specialization levels. EFForTS-LGraf model parameters such as household area or field size frequency distributions can be derived from household surveys or geospatial data. This can be an advantage over the abstract parameters of neutral landscape generators. EFForTS-LGraf can be applied both to generate maps as inputs for simulation modelling and as a stand-alone tool for specific landscape-scale analyses in the context of ecological-economic studies of smallholder farming systems.
 
