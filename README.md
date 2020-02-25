@@ -1,4 +1,5 @@
 
+# nlrx <img src="figures/EFForTS-LGraf_logo.png" align="right" width="150" />
 
 # EFForTS-LGraf Manual
 
@@ -10,7 +11,7 @@ The model itself can be downloaded at our [github repository](https://github.com
 
 The model description and applications were published as a research article in [PLOS ONE](https://journals.plos.org/plosone/article/authors?id=10.1371/journal.pone.0222949).
 
-The manual of this repository can be accessed via [https://nldoc.github.io/EFForTS-LGraf.bookdown/](https://nldoc.github.io/EFForTS-LGraf.bookdown/)
+The manual of EFForTS-LGraf (based on content of this repository) can be accessed via [https://nldoc.github.io/EFForTS-LGraf.bookdown/](https://nldoc.github.io/EFForTS-LGraf.bookdown/)
 
 The manual has been created with [bookdown](https://bookdown.org/).
 
