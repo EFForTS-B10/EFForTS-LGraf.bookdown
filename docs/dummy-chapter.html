@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Dummy chapter | EFForTS-LGraf Manual</title>
+  <title>Chapter 6 Dummy chapter | EFForTS-LGraf Manual</title>
   <meta name="description" content="Software manual for Landscape Generator EFForTS-LGraf" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Dummy chapter | EFForTS-LGraf Manual" />
+  <meta property="og:title" content="Chapter 6 Dummy chapter | EFForTS-LGraf Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Dummy chapter | EFForTS-LGraf Manual" />
+  <meta name="twitter:title" content="Chapter 6 Dummy chapter | EFForTS-LGraf Manual" />
   
   <meta name="twitter:description" content="Software manual for Landscape Generator EFForTS-LGraf" />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Jan Salecker" />
 
 
-<meta name="date" content="2020-02-25" />
+<meta name="date" content="2020-03-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="application.html"/>
-<link rel="next" href="dummy-chapter-1.html"/>
+<link rel="prev" href="huge-landscapes.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +64,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -145,8 +143,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="funcpar.html"><a href="funcpar.html#establish-fields"><i class="fa fa-check"></i><b>3.2.2</b> Establish fields</a></li>
 <li class="chapter" data-level="3.2.3" data-path="funcpar.html"><a href="funcpar.html#distribute-crops"><i class="fa fa-check"></i><b>3.2.3</b> Distribute crops</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="funcpar.html"><a href="funcpar.html#using-custom-road-shapefiles"><i class="fa fa-check"></i><b>3.3</b> Using custom road shapefiles</a></li>
-<li class="chapter" data-level="3.4" data-path="funcpar.html"><a href="funcpar.html#efforts-lgraf-output-functions"><i class="fa fa-check"></i><b>3.4</b> EFForTS-LGraf output functions</a></li>
+<li class="chapter" data-level="3.3" data-path="funcpar.html"><a href="funcpar.html#artificial-road-creation"><i class="fa fa-check"></i><b>3.3</b> Artificial road creation</a></li>
+<li class="chapter" data-level="3.4" data-path="funcpar.html"><a href="funcpar.html#using-custom-road-shapefiles"><i class="fa fa-check"></i><b>3.4</b> Using custom road shapefiles</a></li>
+<li class="chapter" data-level="3.5" data-path="funcpar.html"><a href="funcpar.html#efforts-lgraf-output-functions"><i class="fa fa-check"></i><b>3.5</b> EFForTS-LGraf output functions</a></li>
+<li class="chapter" data-level="3.6" data-path="funcpar.html"><a href="funcpar.html#visual-map-output"><i class="fa fa-check"></i><b>3.6</b> Visual map output</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="funcpar.html"><a href="funcpar.html#paint.default.map"><i class="fa fa-check"></i><b>3.6.1</b> paint.default.map</a></li>
+<li class="chapter" data-level="3.6.2" data-path="funcpar.html"><a href="funcpar.html#paint.all"><i class="fa fa-check"></i><b>3.6.2</b> paint.all</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>4</b> Application examples</a><ul>
 <li class="chapter" data-level="4.1" data-path="application.html"><a href="application.html#standalone"><i class="fa fa-check"></i><b>4.1</b> Standalone application examples</a><ul>
@@ -156,8 +159,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.1" data-path="application.html"><a href="application.html#example-1-gradient-of-agricultural-density"><i class="fa fa-check"></i><b>4.2.1</b> Example 1: Gradient of agricultural density</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dummy-chapter.html"><a href="dummy-chapter.html"><i class="fa fa-check"></i><b>5</b> Dummy chapter</a></li>
-<li class="chapter" data-level="6" data-path="dummy-chapter-1.html"><a href="dummy-chapter-1.html"><i class="fa fa-check"></i><b>6</b> Dummy chapter</a></li>
+<li class="chapter" data-level="5" data-path="huge-landscapes.html"><a href="huge-landscapes.html"><i class="fa fa-check"></i><b>5</b> Huge Landscapes</a><ul>
+<li class="chapter" data-level="5.1" data-path="huge-landscapes.html"><a href="huge-landscapes.html#running-the-model-in-netlogo"><i class="fa fa-check"></i><b>5.1</b> Running the model in NetLogo</a></li>
+<li class="chapter" data-level="5.2" data-path="huge-landscapes.html"><a href="huge-landscapes.html#running-the-model-using-nlrx"><i class="fa fa-check"></i><b>5.2</b> Running the model using nlrx</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dummy-chapter.html"><a href="dummy-chapter.html"><i class="fa fa-check"></i><b>6</b> Dummy chapter</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -180,8 +186,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="dummy-chapter" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Dummy chapter</h1>
-<p>Dummy chapter</p>
+<h1><span class="header-section-number">Chapter 6</span> Dummy chapter</h1>
+<p>Dummy chapter.</p>
 
 </div>
             </section>
@@ -189,8 +195,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="application.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dummy-chapter-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="huge-landscapes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -209,12 +215,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -226,6 +231,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

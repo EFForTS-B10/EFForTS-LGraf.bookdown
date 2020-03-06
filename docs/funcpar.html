@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Functionality and Parameterization | EFForTS-LGraf Manual</title>
   <meta name="description" content="Software manual for Landscape Generator EFForTS-LGraf" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Functionality and Parameterization | EFForTS-LGraf Manual" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Jan Salecker" />
 
 
-<meta name="date" content="2020-02-25" />
+<meta name="date" content="2020-03-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,9 +53,9 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +64,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +80,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -145,8 +143,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="funcpar.html"><a href="funcpar.html#establish-fields"><i class="fa fa-check"></i><b>3.2.2</b> Establish fields</a></li>
 <li class="chapter" data-level="3.2.3" data-path="funcpar.html"><a href="funcpar.html#distribute-crops"><i class="fa fa-check"></i><b>3.2.3</b> Distribute crops</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="funcpar.html"><a href="funcpar.html#using-custom-road-shapefiles"><i class="fa fa-check"></i><b>3.3</b> Using custom road shapefiles</a></li>
-<li class="chapter" data-level="3.4" data-path="funcpar.html"><a href="funcpar.html#efforts-lgraf-output-functions"><i class="fa fa-check"></i><b>3.4</b> EFForTS-LGraf output functions</a></li>
+<li class="chapter" data-level="3.3" data-path="funcpar.html"><a href="funcpar.html#artificial-road-creation"><i class="fa fa-check"></i><b>3.3</b> Artificial road creation</a></li>
+<li class="chapter" data-level="3.4" data-path="funcpar.html"><a href="funcpar.html#using-custom-road-shapefiles"><i class="fa fa-check"></i><b>3.4</b> Using custom road shapefiles</a></li>
+<li class="chapter" data-level="3.5" data-path="funcpar.html"><a href="funcpar.html#efforts-lgraf-output-functions"><i class="fa fa-check"></i><b>3.5</b> EFForTS-LGraf output functions</a></li>
+<li class="chapter" data-level="3.6" data-path="funcpar.html"><a href="funcpar.html#visual-map-output"><i class="fa fa-check"></i><b>3.6</b> Visual map output</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="funcpar.html"><a href="funcpar.html#paint.default.map"><i class="fa fa-check"></i><b>3.6.1</b> paint.default.map</a></li>
+<li class="chapter" data-level="3.6.2" data-path="funcpar.html"><a href="funcpar.html#paint.all"><i class="fa fa-check"></i><b>3.6.2</b> paint.all</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="application.html"><a href="application.html"><i class="fa fa-check"></i><b>4</b> Application examples</a><ul>
 <li class="chapter" data-level="4.1" data-path="application.html"><a href="application.html#standalone"><i class="fa fa-check"></i><b>4.1</b> Standalone application examples</a><ul>
@@ -156,8 +159,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.1" data-path="application.html"><a href="application.html#example-1-gradient-of-agricultural-density"><i class="fa fa-check"></i><b>4.2.1</b> Example 1: Gradient of agricultural density</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dummy-chapter.html"><a href="dummy-chapter.html"><i class="fa fa-check"></i><b>5</b> Dummy chapter</a></li>
-<li class="chapter" data-level="6" data-path="dummy-chapter-1.html"><a href="dummy-chapter-1.html"><i class="fa fa-check"></i><b>6</b> Dummy chapter</a></li>
+<li class="chapter" data-level="5" data-path="huge-landscapes.html"><a href="huge-landscapes.html"><i class="fa fa-check"></i><b>5</b> Huge Landscapes</a><ul>
+<li class="chapter" data-level="5.1" data-path="huge-landscapes.html"><a href="huge-landscapes.html#running-the-model-in-netlogo"><i class="fa fa-check"></i><b>5.1</b> Running the model in NetLogo</a></li>
+<li class="chapter" data-level="5.2" data-path="huge-landscapes.html"><a href="huge-landscapes.html#running-the-model-using-nlrx"><i class="fa fa-check"></i><b>5.2</b> Running the model using nlrx</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dummy-chapter.html"><a href="dummy-chapter.html"><i class="fa fa-check"></i><b>6</b> Dummy chapter</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -260,14 +266,18 @@ Figure 3.1: Setup parameters
 </tr>
 <tr class="odd">
 <td>1.11</td>
-<td>This experimental feature allows to create a second type of household in the model, that uses a diferent area distribution (as defined in 1.11.2).</td>
+<td>This experimental feature allows to create a second type of household in the model, that uses a different area distribution (as defined in 1.11.2).</td>
 </tr>
 <tr class="even">
 <td>1.12</td>
-<td>Define inaccessible areas that are created during setup. These areas are not available for field creation by smallholder households. These areas may represent conservation areas or company plantations that are not owend by smallholders.</td>
+<td>Define inaccessible areas that are created during setup. These areas are not available for field creation by smallholder households. These areas may represent conservation areas or company plantations that are not owend by smallholders. These areas can be connected to roads or placed randomly on the map. You can define the proportion of the landscape covered by these areas and their distribution.</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Dangerous parameter combinations:</strong>
+</br> - the theoretically maximum possible number of households is <code>total-road-length</code> (1.3.2) * <code>households-per-cell</code> (1.5), but can be reduced by road-connected inaccessible areas; to be safe choose a number of households less than half the maximum number
+</br> - a high number of households or villages and a big household area can lead to a theoretically covered area bigger than the model area, especially in combination with a high fraction of inaccessible areas. This leads to a realized agricultural area much smaller than intended.
+</br> - village size should be big enough to accomodate several households</p>
 </div>
 <div id="establish-fields" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Establish fields</h3>
@@ -293,7 +303,7 @@ Figure 3.2: Field establishment parameters
 <tbody>
 <tr class="odd">
 <td>2.1</td>
-<td>Define the field size distribution for the field establishment procedure.</td>
+<td>Define the field size distribution for the field establishment procedure. Minimum field size is one cell. Field size should not be bigger than household size, otherwise it would lead to an unexpectedly large agricultural area.</td>
 </tr>
 <tr class="even">
 <td>2.2</td>
@@ -305,7 +315,78 @@ Figure 3.2: Field establishment parameters
 </tr>
 <tr class="even">
 <td>2.4</td>
-<td>Select a set of field establishment strategies. Four strategies are currently implemented. Pred-defined combinations of these strategies can also be selected using parameters of 2.5. A household will try to establish a field under the current strategy for a specified number of tries (as defined in 2.6). If a household does not succeed with the current strategy, it will switch to the next strategy in numeric order (e.g. if all strategies are available and the current strategy is s1.homebase, it will switch to s2.fields). </br> - s1.homebase - Households will search for empty cells around their homebase to establish fields </br> - s2.fields - Households will search for empty cells around already established fields to establish new fields </br> - s3.nearby - Households will search for empty cells in an gradually increasing radius around their homebase </br> - s4.avoid - Households will search for empty cells around their homebase, that are only surrounded by empty cells</td>
+<td>Select a set of field establishment strategies. Four strategies are currently implemented. Pre-defined combinations of these strategies can also be selected using parameters of 2.5. A household will try to establish a field under the current strategy for a specified number of tries (as defined in 2.6). If a household does not succeed with the current strategy, it will switch to the next strategy in numeric order (e.g. if all strategies are available and the current strategy is s1.homebase, it will switch to s2.fields). </br> - s1.homebase - Households will search for empty cells around their homebase to establish fields </br> - s2.fields - Households will search for empty cells around already established fields to establish new fields </br> - s3.nearby - Households will search for empty cells in an gradually increasing radius around their homebase </br> - s4.avoid - Households will search for empty cells around their homebase, that are only surrounded by empty cells</td>
+</tr>
+</tbody>
+</table>
+<p>2.5</p>
+<p>The available sets of strategies to choose from. The first enabled strategy will always be used first.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Id</th>
+<th align="center">homebase</th>
+<th align="center">fields</th>
+<th align="center">nearby</th>
+<th align="center">avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">✔</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">✔</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+<td align="center">✔</td>
+</tr>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
+</tr>
+<tr class="even">
+<td align="center">8</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center">✘</td>
+<td align="center">✔</td>
 </tr>
 </tbody>
 </table>
@@ -338,7 +419,7 @@ Figure 3.3: Crop distribution parameters
 </tr>
 <tr class="even">
 <td>3.2</td>
-<td>Define fractions of each cropt type. The sum of these fractions must add up to one</td>
+<td>Define fractions of each crop type. The sum of these fractions must add up to one. If it is smaller than 1 the fraction of the land use type selected at 3.4 is increased until the sum is 1.</td>
 </tr>
 <tr class="odd">
 <td>3.3</td>
@@ -352,8 +433,21 @@ Figure 3.3: Crop distribution parameters
 </table>
 </div>
 </div>
+<div id="artificial-road-creation" class="section level2">
+<h2><span class="header-section-number">3.3</span> Artificial road creation</h2>
+<p>You can choose one of two road creation algorithms, either graffe or perlin. For both you’ll have to set the parameters <code>total-road-length</code> and <code>min-dist-roads</code> (the unit for both is cells).</p>
+<p>The graffe altgorithm produces straight roads like these:</p>
+<p><img src="figures/screenshot_graffe.PNG" width="300" /></p>
+<p>The perlin algorithm produces contorted roads. The perlin parameters can be set at 1.3.3) to influence the street layout. For examples of how the parameters change the street layout see below:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="figures/screenshot_perlin-all-low.PNG" alt="Left: all parameters with minimum value; middle: `cone-angle` high;right: `dist-weight` high" width="33%" /><img src="figures/screenshot_perlin-cone-angle.PNG" alt="Left: all parameters with minimum value; middle: `cone-angle` high;right: `dist-weight` high" width="33%" /><img src="figures/screenshot_perlin-dist-weight.PNG" alt="Left: all parameters with minimum value; middle: `cone-angle` high;right: `dist-weight` high" width="33%" />
+<p class="caption">
+Figure 3.4: Left: all parameters with minimum value; middle: <code>cone-angle</code> high;right: <code>dist-weight</code> high
+</p>
+</div>
+</div>
 <div id="using-custom-road-shapefiles" class="section level2">
-<h2><span class="header-section-number">3.3</span> Using custom road shapefiles</h2>
+<h2><span class="header-section-number">3.4</span> Using custom road shapefiles</h2>
 <p>Instead of generating roads, EFForTS-LGraf is able to use an existing roadmap shapefile as input by selecting <code>real.shapefile</code> from the dropdown menu under 1.3. These shapefiles are loaded from the folder “LGraf_roadmaps” within the input folder of the model directory.
 Own shapefiles can be added here. Please note, own shapefiles need to follow a specified filename format as shown below. At least three files need to be available to load a roadmap shapefile:
 * &lt;roadmapid&gt;_road.prj - the projection file of the roadmap
@@ -363,7 +457,7 @@ Own shapefiles can be added here. Please note, own shapefiles need to follow a s
 <p>Five roadmap shapefiles from Jambi, Indonesia are already included in EFForTS-LGraf. These shapefiles can be loaded by entering <code>jambi1</code>, <code>jambi2</code>, <code>jambi3</code>, <code>jambi4</code> or <code>jambi5</code> under 1.3.1).</p>
 </div>
 <div id="efforts-lgraf-output-functions" class="section level2">
-<h2><span class="header-section-number">3.4</span> EFForTS-LGraf output functions</h2>
+<h2><span class="header-section-number">3.5</span> EFForTS-LGraf output functions</h2>
 <p>The main output function of EFForTS-LGraf is executed by pressing the “Write output” button on the GUI (IV. Paint &amp; Output). This function will write the following spatial information to disk:</p>
 <table>
 <colgroup>
@@ -444,7 +538,71 @@ Own shapefiles can be added here. Please note, own shapefiles need to follow a s
 <p>The output files are written to the specified subfolder/path <code>foldername</code>. In order to write output, the specified folder/path need to exist.</p>
 <p>The NetLogo GIS extension allows to map the NetLogo coordinates to a specified envelope of GIS coordinates.
 This can be done by activating the <code>apply-gis-envelope?</code> switch and specifying the boundary coordinates of the GIS envelope. These coordinates are specified as a list (<code>[minimum-x maximum-x minimum-y maximum-y]</code>) in the input field <code>gis-envelope</code>. Additionally, spatial output can be created with a specified projection system. In order to set the projection, activate the switch <code>apply-gis-projection?</code> and specify a "*.prj" file with projection definitions in the input field <code>gis-projection</code> (see <a href="https://ccl.northwestern.edu/netlogo/docs/gis.html#gis:load-coordinate-system">NetLogo user manual</a> for more information).</p>
+</div>
+<div id="visual-map-output" class="section level2">
+<h2><span class="header-section-number">3.6</span> Visual map output</h2>
+<div id="paint.default.map" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> paint.default.map</h3>
+<p>The <code>paint.default.map</code> function in section IV. Paint and Output creates maps highlighting certain categories chosen with the <code>default.maps</code>chooser. The results can be saved as a .png-file using the <code>screenshot</code> function.</p>
+<p>The following options are available:</p>
+<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<img src="figures/screenshot_forest-non-forest.PNG" alt="forest-non-forest: paints forest, fields and inaccessible areas in different colours" width="80%" />
+<p class="caption">
+Figure 3.5: forest-non-forest: paints forest, fields and inaccessible areas in different colours
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<img src="figures/screenshot_landuse.PNG" alt="landuse: paints forest, fields, inaccessible areas, roads and homebase cells in different colours" width="80%" />
+<p class="caption">
+Figure 3.6: landuse: paints forest, fields, inaccessible areas, roads and homebase cells in different colours
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="figures/screenshot_landuse-type.PNG" alt="landuse-type: paints the different crops, inaccessible areas and homebase cells in different colours" width="80%" />
+<p class="caption">
+Figure 3.7: landuse-type: paints the different crops, inaccessible areas and homebase cells in different colours
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-11"></span>
+<img src="figures/screenshot_field-patches.PNG" alt="field-patches: paints each field and inaccessible areas in a different colour" width="80%" />
+<p class="caption">
+Figure 3.8: field-patches: paints each field and inaccessible areas in a different colour
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-12"></span>
+<img src="figures/screenshot_household-patches.PNG" alt="household-patches: paints the fields belonging to one household in one color and shows the id of each individual household starting with 0; -1 is the forest/landscape matrix" width="80%" />
+<p class="caption">
+Figure 3.9: household-patches: paints the fields belonging to one household in one color and shows the id of each individual household starting with 0; -1 is the forest/landscape matrix
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-13"></span>
+<img src="figures/screenshot_forestcluster.PNG" alt="forestcluster: paints forestclusters and shows their ids starting with 0; -1 are fields (gray is field on this map not forest/matrix)" width="80%" />
+<p class="caption">
+Figure 3.10: forestcluster: paints forestclusters and shows their ids starting with 0; -1 are fields (gray is field on this map not forest/matrix)
+</p>
+</div>
+</div>
+<div id="paint.all" class="section level3">
+<h3><span class="header-section-number">3.6.2</span> paint.all</h3>
+<p><code>paint.all</code> is the function used to create the maps generated by <code>paint.default.map</code> but all options can be chosen individually by the user.</p>
+<p><code>paint-cells</code>: colours the cells based on the chosen property, which can be one of the following:<br />
+</br> - landuse: forest, field or inaccessible area<br />
+</br> - landuse-type: crops, homebases, inaccessible areas, forest<br />
+</br> - id: connected patches with the same age and land use have the same id, so each field and forest cluster has its own id<br />
+</br> - owner: fields belonging to the same household<br />
+</br> - forestcluster_id: forestcluster all get the same colour, fields and inaccessible areas each another</p>
+<p><code>label-cells</code>: labels the cells based on the chosen property, duplicate labels are removed.</p>
+<p><code>paint-homebase-cells</code> paints homebase cells</p>
+<p><code>paint-road-cells</code> paints road cells</p>
+<p><code>show-households</code> shows households like this:</p>
+<div class="figure"><span id="fig:unnamed-chunk-14"></span>
+<img src="figures/screenshot_show-households.PNG" alt="paint.all with show-households, paint-homebase-cells and with `paint-cells` landuse-type " width="80%" />
+<p class="caption">
+Figure 3.11: paint.all with show-households, paint-homebase-cells and with <code>paint-cells</code> landuse-type
+</p>
+</div>
 
+</div>
 </div>
 </div>
             </section>
@@ -472,12 +630,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -489,6 +646,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

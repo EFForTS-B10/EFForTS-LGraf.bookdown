@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>EFForTS-LGraf Manual</title>
+  <title>Chapter 5 Huge Landscapes | EFForTS-LGraf Manual</title>
   <meta name="description" content="Software manual for Landscape Generator EFForTS-LGraf" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="EFForTS-LGraf Manual" />
+  <meta property="og:title" content="Chapter 5 Huge Landscapes | EFForTS-LGraf Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="EFForTS-LGraf Manual" />
+  <meta name="twitter:title" content="Chapter 5 Huge Landscapes | EFForTS-LGraf Manual" />
   
   <meta name="twitter:description" content="Software manual for Landscape Generator EFForTS-LGraf" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="getstarted.html"/>
+<link rel="prev" href="application.html"/>
+<link rel="next" href="dummy-chapter.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -185,33 +185,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">EFForTS-LGraf Manual</h1>
-<p class="author"><em>Jan Salecker</em></p>
-<p class="date"><em>2020-03-06</em></p>
+<div id="huge-landscapes" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Huge Landscapes</h1>
+<p>Due to a built in limit of 1GB of RAM available in NetLogo the landscape is limited to an area of 825x825 cells. To create bigger landscapes, as a rule of thumb, you need about 2GB of RAM for each 1000x1000 chunk of landscape. There are two options to get that:</p>
+<div id="running-the-model-in-netlogo" class="section level2">
+<h2><span class="header-section-number">5.1</span> Running the model in NetLogo</h2>
+<p>If you want to run the model directly from NetLogo change the RAM available to NetLogo in its program files. Each platform contains “.cfg” files containing JVM settings. There is one cfg file for each sub-application (NetLogo, NetLogo 3D, HubNet Client, etc.) Although the file location varies by platform, the process for changing it is the same. Locate the section of the file that looks like the following:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">[JVMOptions]</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co"># there may be one or more lines, leave them unchanged</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="op">-</span>Xmx1024m</a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co"># there may be one or more lines, leave them unchanged</span></a></code></pre></div>
+<p>Modify the value immediately following -Xmx, changing it to the amount of space you need, save the file, and restart NetLogo. Platform specific notes follow:</p>
+<p><strong>Windows:</strong> The cfg files will be in C:\Program Files (x86)\NetLogo 6.1.1\app if you are running 64-bit windows, and C:\Program Files\NetLogo 6.1.1\app otherwise.</p>
+<p><strong>Mac OS X:</strong> The file for NetLogo will be located at: /Application/NetLogo 6.1.1/NetLogo.app/Contents/Java/NetLogo.cfg</p>
+<p><strong>Other:</strong> The cfg files will be located in the netlogo-6.1.1/app folder after untarring</p>
+<p>For more detailed information have a look <a href="https://ccl.northwestern.edu/netlogo/docs/">here</a> at “How big can my model be?” in the FAQs.</p>
 </div>
-<div id="introduction-to-efforts-lgraf" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction to EFForTS-LGraf</h1>
-<p><img src="figures/EFForTS-LGraf_logo.png" align="right" width="250" /></p>
-<p>Spatially-explicit simulation models are commonly used to study complex ecological and socio-economic research questions. Often these models depend on detailed input data, such as initial land-cover maps to set up model simulations. Here we present the landscape generator EFFortS-LGraf that provides artificially-generated land-use maps of agricultural landscapes shaped by small-scale farms. EFForTS-LGraf is a process-based landscape generator that explicitly incorporates the human dimension of land-use change. The model generates roads and villages that consist of smallholder farming households. These smallholders use different establishment strategies to create fields in their close vicinity. Crop types are distributed to these fields based on crop fractions and specialization levels. EFForTS-LGraf model parameters such as household area or field size frequency distributions can be derived from household surveys or geospatial data. This can be an advantage over the abstract parameters of neutral landscape generators. EFForTS-LGraf can be applied both to generate maps as inputs for simulation modelling and as a stand-alone tool for specific landscape-scale analyses in the context of ecological-economic studies of smallholder farming systems.</p>
-<p>If you are interested in technical details, sensitivity analyes, model validation and application examples, please check out the accompanying publication of EFForTS-LGraf @ <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0222949">Plos one</a>. If you use EFForTS-LGraf for your research please refer to this publication (<a href="https://journals.plos.org/plosone/article/citation?id=10.1371/journal.pone.0222949">citation information</a>).</p>
-<p>EFForTS-LGraf can be downloaded from our <a href="https://github.com/nldoc/EFForTS-LGraf">github repository</a>.
-You need NetLogo 6 to open and run the model.</p>
-<p>This manual will guide you through some examples that should get you started with EFForTS-LGraf.</p>
-<ul>
-<li>Chapter <a href="getstarted.html#getstarted">2</a> contains information on how to setup and run EFForTS-LGraf.</li>
-<li>Chapter <a href="funcpar.html#funcpar">3</a> will give you an overview of the basic functionality and parameters.</li>
-<li>Chapter <a href="application.html#application">4</a> contains different application examples.</li>
-</ul>
+<div id="running-the-model-using-nlrx" class="section level2">
+<h2><span class="header-section-number">5.2</span> Running the model using nlrx</h2>
+<p>If you use the nlrx-package to run your model change the jvmmem variable to the amount of RAM you need when creating the nl-object.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">library</span>(nlrx)</a>
+<a class="sourceLine" id="cb8-2" title="2">netlogopath &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">&quot;1_Model/NetLogo 6.1.1/&quot;</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3">modelpath &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="st">&quot;1_Model/EFForTS-LGraf/EFForTS-LGraf.nlogo&quot;</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4"></a>
+<a class="sourceLine" id="cb8-5" title="5">nl &lt;-<span class="st"> </span><span class="kw">nl</span>(<span class="dt">nlversion =</span> <span class="st">&quot;6.1.1&quot;</span>,</a>
+<a class="sourceLine" id="cb8-6" title="6">         <span class="dt">nlpath =</span> netlogopath,</a>
+<a class="sourceLine" id="cb8-7" title="7">         <span class="dt">modelpath =</span> modelpath,</a>
+<a class="sourceLine" id="cb8-8" title="8">         <span class="dt">jvmmem =</span> <span class="dv">2024</span>)</a></code></pre></div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="getstarted.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="application.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dummy-chapter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

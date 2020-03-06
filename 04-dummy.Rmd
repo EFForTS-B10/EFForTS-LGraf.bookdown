@@ -1,3 +1,39 @@
-# Dummy chapter
+# Huge Landscapes
 
-Dummy chapter
+Due to a built in limit of 1GB of RAM available in NetLogo the landscape is limited to an area of 825x825 cells. To create bigger landscapes, as a rule of thumb, you need about 2GB of RAM for each 1000x1000 chunk of landscape. There are two options to get that:
+
+## Running the model in NetLogo 
+
+If you want to run the model directly from NetLogo change the RAM available to NetLogo in its program files. Each platform contains “.cfg” files containing JVM settings. There is one cfg file for each sub-application (NetLogo, NetLogo 3D, HubNet Client, etc.) Although the file location varies by platform, the process for changing it is the same. Locate the section of the file that looks like the following: 
+
+```{r, eval=FALSE}
+[JVMOptions]
+# there may be one or more lines, leave them unchanged
+-Xmx1024m
+# there may be one or more lines, leave them unchanged
+```
+
+Modify the value immediately following -Xmx, changing it to the amount of space you need, save the file, and restart NetLogo. Platform specific notes follow:
+
+**Windows:** The cfg files will be in C:\\Program Files (x86)\\NetLogo 6.1.1\\app if you are running 64-bit windows, and C:\\Program Files\\NetLogo 6.1.1\\app otherwise.
+
+**Mac OS X:** The file for NetLogo will be located at: /Application/NetLogo 6.1.1/NetLogo.app/Contents/Java/NetLogo.cfg
+
+**Other:** The cfg files will be located in the netlogo-6.1.1/app folder after untarring
+
+For more detailed information have a look [here](https://ccl.northwestern.edu/netlogo/docs/) at "How big can my model be?" in the FAQs.
+
+## Running the model using nlrx
+
+If you use the nlrx-package to run your model change the jvmmem variable to the amount of RAM you need when creating the nl-object.
+
+```{r, eval=FALSE}
+library(nlrx)
+netlogopath <- file.path("1_Model/NetLogo 6.1.1/")
+modelpath <- file.path("1_Model/EFForTS-LGraf/EFForTS-LGraf.nlogo")
+
+nl <- nl(nlversion = "6.1.1",
+         nlpath = netlogopath,
+         modelpath = modelpath,
+         jvmmem = 2024)
+```
