@@ -3,7 +3,7 @@
 
 ## Functionality
 
-THE MODEL WORKS LIKE THAT
+EFFortS-LGraf that provides artificially-generated land-use maps of agricultural landscapes shaped by small-scale farms. EFForTS-LGraf is a process-based landscape generator that explicitly incorporates the human dimension of land-use change. The model generates roads and villages that consist of smallholder farming households. These smallholders use different establishment strategies to create fields in their close vicinity. Crop types are distributed to these fields based on crop fractions and specialization levels. EFForTS-LGraf model parameters such as household area or field size frequency distributions can be derived from household surveys or geospatial data. This can be an advantage over the abstract parameters of neutral landscape generators. We tested the model using oil palm and rubber farming in Indonesia as a case study and validated the artificially-generated maps against classified satellite images. Our results show that EFForTS-LGraf is able to generate realistic land-cover maps with properties that lie within the boundaries of landscapes from classified satellite images. EFForTS-LGraf can be applied both to generate maps as inputs for simulation modelling and as a stand-alone tool for specific landscape-scale analyses in the context of ecological-economic studies of smallholder farming systems.
 
 
 
@@ -16,7 +16,7 @@ All parameters on the graphical user interface are numbered. The following secti
 The parameters in the blue colored section of the EFForTS-LGraf GUI are used for model setup.
 World dimensions, scale parameters, road setup, household, village and field sizes are some of the parameters that are defined in this section.
 
-```{r, echo=FALSE, fig.cap="Setup parameters"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Setup parameters"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_I.png")
 ```
 
@@ -24,7 +24,7 @@ knitr::include_graphics("figures/EFForTS-LGraf_interface_I.png")
 | --- | -------------------------- |
 | 1.1 | First define if a randomly drawn seed will be used or set a specific seed to make map generation reproducible |
 | 1.2 | Set the dimensions of the landscape in cells, and the corresponding cell resolution in meter (used for area calculations) |
-| 1.3 | Choose algorithm for road creation |
+| 1.3 | Choose algorithm for road creation (see examples in section 3.3 and 3.4)|
 | 1.3.1 | If `real-road-map` has been chosen in 1.3, add a string identifier for the map (see section Use own road shapefiles as road templates below for guidance on using own road shapefiles) |
 | 1.3.2 | If an artificial road generation algorithm has been chosen in 1.3, define the number of road cells and the minimum distance between roads |
 | 1.3.3 | If `artifical.perlin` has been chosen in 1.3 define the parameters for the perlin noise algorithm |
@@ -38,16 +38,17 @@ knitr::include_graphics("figures/EFForTS-LGraf_interface_I.png")
 | 1.12 | Define inaccessible areas that are created during setup. These areas are not available for field creation by smallholder households. These areas may represent conservation areas or company plantations that are not owend by smallholders. These areas can be connected to roads or placed randomly on the map. You can define the proportion of the landscape covered by these areas and their distribution. |
 
 **Dangerous parameter combinations:** 
-</br> - the theoretically maximum possible number of households is `total-road-length` (1.3.2) * `households-per-cell` (1.5), but can be reduced by road-connected inaccessible areas; to be safe choose a number of households less than half the maximum number
-</br> - a high number of households or villages and a big household area can lead to a theoretically covered area bigger than the model area, especially in combination with a high fraction of inaccessible areas. This leads to a realized agricultural area much smaller than intended.
-</br> - village size should be big enough to accomodate several households
+* the theoretically maximum possible number of households is `total-road-length` (1.3.2) * `households-per-cell` (1.5), but can be reduced by road-connected inaccessible areas; to be safe choose a number of households less than half the maximum number
+* a high number of households or villages and a big household area can lead to a theoretically covered area bigger than the model area, especially in combination with a high fraction of inaccessible areas. This leads to a realized agricultural area much smaller than intended.
+* village size should be big enough to accomodate several households
+* when using normal or log-normal distributions you might get the warning "stuck in endless loop, think about changing the model parameters", before actually changing the parameters try restarting the model
 
 ### Establish fields
 
 The parameters in the magenta colored section of the EFForTS-LGraf GUI are used for the field establishment procedure.
 Here you define the field size distribution and control the strategies that are used for field establishment.
 
-```{r, echo=FALSE, fig.cap="Field establishment parameters"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Field establishment parameters"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_II.png")
 ```
 
@@ -78,7 +79,7 @@ The available sets of strategies to choose from. The first enabled strategy will
 The parameters in the orange colored section of the EFForTS-LGraf GUI are used for the crop distribution procedure.
 Here you define the names, proportions and specialization levels of crop classes that are distributed to the fields.
 
-```{r, echo=FALSE, fig.cap="Crop distribution parameters"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Crop distribution parameters"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_III.png")
 ```
 
@@ -101,14 +102,16 @@ knitr::include_graphics("figures/screenshot_graffe.PNG")
 
 The perlin algorithm produces contorted roads. The perlin parameters can be set at 1.3.3) to influence the street layout. For examples of how the parameters change the street layout see below:
 
-```{r, echo=FALSE, out.width="33%", fig.cap="Left: all parameters with minimum value; middle: `cone-angle` high;right: `dist-weight` high",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("figures/screenshot_perlin-all-low.PNG","figures/screenshot_perlin-cone-angle.PNG","figures/screenshot_perlin-dist-weight.PNG")) 
+```{r, echo=FALSE, out.width=c("32%","1%","32%","1%","32%"), fig.cap="Left: all parameters with minimum value; middle: `cone-angle` high;right: `dist-weight` high",fig.show='hold', fig.align='center'}
+knitr::include_graphics(c("figures/screenshot_perlin-all-low.PNG","figures/spacer.png","figures/screenshot_perlin-cone-angle.PNG","figures/spacer.png","figures/screenshot_perlin-dist-weight.PNG")) 
 ```
+
 
 ## Using custom road shapefiles
 
 Instead of generating roads, EFForTS-LGraf is able to use an existing roadmap shapefile as input by selecting `real.shapefile` from the dropdown menu under 1.3. These shapefiles are loaded from the folder "LGraf_roadmaps" within the input folder of the model directory.
 Own shapefiles can be added here. Please note, own shapefiles need to follow a specified filename format as shown below. At least three files need to be available to load a roadmap shapefile:
+
 * &lt;roadmapid&gt;_road.prj - the projection file of the roadmap
 * &lt;roadmapid&gt;_road.shp - the actual shapefile containing road polylines
 * &lt;roadmapid&gt;_area.shp - a shapefile with a framing box of the road shapefile which is used to set the dimensions of the landscape
@@ -140,6 +143,8 @@ The output files are written to the specified subfolder/path `foldername`. In or
 
 The NetLogo GIS extension allows to map the NetLogo coordinates to a specified envelope of GIS coordinates.
 This can be done by activating the `apply-gis-envelope?` switch and specifying the boundary coordinates of the GIS envelope. These coordinates are specified as a list (`[minimum-x maximum-x minimum-y maximum-y]`) in the input field `gis-envelope`. Additionally, spatial output can be created with a specified projection system. In order to set the projection, activate the switch `apply-gis-projection?` and specify a "*.prj" file with projection definitions in the input field `gis-projection` (see [NetLogo user manual](https://ccl.northwestern.edu/netlogo/docs/gis.html#gis:load-coordinate-system) for more information).
+
+Furthermore, if a road shapefile is used, EFForTS-LGraf automatically prints the spatial extent of the shapefile envelope into the command center at the start of the setup procedure. Thus, generated maps can be easily mapped to these coordinates. For example, lets assume we want to generate a landscape for the roadmap `jambi3` and we want to export spatial data with the same projection and geographic extent. We set the `road.algorithm` to `real.shapefile` and set the `road-map-id` to `jambi3`. We then set further parameters to our needs and hit the setup button. The geographic extent of the road shapefile is then printed to the command center ([212461.03382129114 217461.0338212902 9753254.946557786 9758254.946557786]). We copy this coordinates list and paste it into the field `gis-envelope` and activate the `apply-gis-envelope?` switch. To also apply a projection, we activate the `apply-projection?` switch and refer to the projection file of our road shapefile `jambi3` which is located at `input/LGraf_roadmaps/jambi3_road.prj`.
 
 ## Visual map output
 
@@ -178,15 +183,11 @@ knitr::include_graphics("figures/screenshot_forestcluster.PNG")
 
 `paint-cells`: colours the cells based on the chosen property, which can be one of the following:  
 
-- landuse: forest, field or inaccessible area
-
-- landuse-type: crops, homebases, inaccessible areas, forest  
-
-- id: connected patches with the same age and land use have the same id, so each field and forest cluster has its own id   
-
-- owner: fields belonging to the same household  
-
-- forestcluster_id: forestcluster all get the same colour, fields and inaccessible areas each another   
+*landuse: forest, field or inaccessible area
+*landuse-type: crops, homebases, inaccessible areas, forest  
+*id: connected patches with the same age and land use have the same id, so each field and forest cluster has its own id   
+*owner: fields belonging to the same household  
+*forestcluster_id: forestcluster all get the same colour, fields and inaccessible areas each another   
 
 `label-cells`: labels the cells based on the chosen property, duplicate labels are removed.
 

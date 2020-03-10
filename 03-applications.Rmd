@@ -26,7 +26,7 @@ From remote sensing we estimate:
 #### Step 2: Parameterize and execute road and household setup
 
 
-```{r, echo=FALSE, fig.cap="Setup parameters"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Setup parameters"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_I.png")
 ```
 
@@ -48,7 +48,7 @@ This procedure will setup the initial landscape with roads, villages, households
 
 #### Step 3: Parameterize and execute field establishment
 
-```{r, echo=FALSE, fig.cap="Field establishment parameters"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Field establishment parameters"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_II.png")
 ```
 
@@ -64,7 +64,7 @@ Once all these parameters are porperly defined, press the button "II. Establish 
 
 #### Step 4: Parameterize and execute crop distribution
 
-```{r, echo=FALSE, fig.cap="Crop distribution parameters"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Crop distribution parameters"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_III.png")
 ```
 
@@ -124,7 +124,7 @@ ggplot() +
 ```
 
 
-```{r, echo=FALSE, fig.cap="Plot generated landscape in R"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Plot generated landscape in R"}
 knitr::include_graphics("figures/application_standalone01_fig01.png")
 ```
 

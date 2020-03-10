@@ -11,7 +11,13 @@ The R package [landscapemetrics](https://cran.r-project.org/web/packages/landsca
 
 EFForTS-LGraf is structured in three submodels. First, the landscape and households are created. Second, fields are established by the households. Third, crop types are distributed to these fields. Finally, maps can be stored as ascii files. The respective parameters and buttons are color-coded and explained in Chapter \@ref(funcpar).
 
-```{r, echo=FALSE, fig.cap="EFForTS-LGraf model interface"}
+```{r, echo=FALSE, out.width="150%",fig.cap="EFForTS-LGraf model interface"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface.png")
+```
+
+```{r, echo=FALSE, fig.cap="EFForTS-LGraf model interface"}
+img = EBImage::readImage("figures/EFForTS-LGraf_interface.png")
+
+EBImage::display(img, method="browser")
 ```
 

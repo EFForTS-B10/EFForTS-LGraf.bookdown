@@ -1,6 +1,6 @@
 --- 
 title: "EFForTS-LGraf Manual"
-author: "Jan Salecker"
+author: "Jan Salecker, Dominik Reiner"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -27,6 +27,7 @@ This manual will guide you through some examples that should get you started wit
 * Chapter \@ref(getstarted) contains information on how to setup and run EFForTS-LGraf.
 * Chapter \@ref(funcpar) will give you an overview of the basic functionality and parameters.
 * Chapter \@ref(application) contains different application examples.
+* Chapter \@ref(hugelandscapes) contains guidelines on creating landscapes of very large dimensions.
 
 
 
