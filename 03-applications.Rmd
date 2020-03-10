@@ -75,8 +75,13 @@ Once all these parameters are properly defined, press the button "III. Distribut
 #### Step 5: Investigate landscape and output
 
 
-```{r, echo=FALSE, fig.cap="Output"}
+```{r, eval=FALSE, echo=FALSE, fig.cap="Output"}
 knitr::include_graphics("figures/EFForTS-LGraf_interface_output.png")
+```
+
+[![](figures/EFForTS-LGraf_interface_output.png "Output")](https://raw.githubusercontent.com/nldoc/EFForTS-LGraf.bookdown/master/figures/EFForTS-LGraf_interface_output.png)
+```{r, echo=FALSE, out.height="0.01cm%", fig.cap="Output"}
+knitr::include_graphics("figures/spacer.png")
 ```
 
 EFForTS-LGraf provides several ways to investigate model output:
@@ -285,4 +290,5 @@ dev.off()
 ```{r, echo=FALSE, fig.cap="Plot of the three generated landscapes"}
 knitr::include_graphics("figures/application_nlrx01_fig01.png")
 ```
+
 
